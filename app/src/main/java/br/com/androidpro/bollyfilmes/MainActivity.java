@@ -3,6 +3,7 @@ package br.com.androidpro.bollyfilmes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -27,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
         FilmesAdapter adapter = new FilmesAdapter(this, arrayList);
 
         list.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 }
 
