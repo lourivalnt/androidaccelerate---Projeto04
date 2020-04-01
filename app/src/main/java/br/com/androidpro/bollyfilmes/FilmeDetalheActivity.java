@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 public class FilmeDetalheActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +24,7 @@ public class FilmeDetalheActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putSerializable(MainActivity.KEY_FILME, itemFilme);
         fragment.setArguments(bundle);
+        fragmentTransaction.add(R.id.fragment_filme_detalhe, fragment);
 
         fragmentTransaction.commit();
     }
