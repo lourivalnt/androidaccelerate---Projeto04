@@ -1,6 +1,5 @@
 package br.com.androidpro.bollyfilmes;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -49,9 +48,8 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ItemFilme itemFilme = arrayList.get(position);
-                Intent intent = new Intent(getContext(), FilmeDetalheActivity.class);
-                intent.putExtra(MainActivity.KEY_FILME, itemFilme);
-                startActivity(intent);
+                Callback callback = (Callback) getActivity();
+                callback.onItemSelected(itemFilme);
             }
         });
 
@@ -74,4 +72,9 @@ public class MainFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public interface Callback {
+        void onItemSelected(ItemFilme itemFilme);
+    }
+
 }
