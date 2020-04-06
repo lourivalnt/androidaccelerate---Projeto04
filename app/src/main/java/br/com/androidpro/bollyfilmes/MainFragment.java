@@ -1,9 +1,11 @@
 package br.com.androidpro.bollyfilmes;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -110,6 +112,8 @@ public class MainFragment extends Fragment {
                 new FilmesAsyncTask().execute();
                 Toast.makeText(getContext(), "Atualizando os filmes...", Toast.LENGTH_LONG).show();
                 return true;
+            case R.id.menu_config:
+                startActivity(new Intent(getContext(), SettingsActivity.class));
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -132,14 +136,18 @@ public class MainFragment extends Fragment {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String ordem = preferences.getString(getString(R.string.prefs_ordem_key), "");
+            String idioma = preferences.getString(getString(R.string.prefs_idioma_key), "");
+
             try {
-                String urlBase = "https://api.themoviedb.org/3/movie/popular?";
+                String urlBase = "https://api.themoviedb.org/3/movie/" + ordem + "?";
                 String apiKey = "api_key";
                 String language = "language";
 
                 Uri uriApi = Uri.parse(urlBase).buildUpon()
                         .appendQueryParameter(apiKey, BuildConfig.TMDB_API_KEY)
-                        .appendQueryParameter(language, "pt-BR")
+                        .appendQueryParameter(language, idioma)
                         .build();
 
                 URL url = new URL(uriApi.toString());
