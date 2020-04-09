@@ -3,7 +3,6 @@ package br.com.androidpro.bollyfilmes;
 
 import android.content.Context;
 import android.database.Cursor;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +91,7 @@ public class FilmesAdapter extends CursorAdapter {
             case VIEW_TYPE_ITEM: {
                 holder.titulo.setText(cursor.getString(tituloIndex));
                 holder.desc.setText(cursor.getString(descricaoIndex));
-                holder.dataLancamento.setText(cursor.getColumnName(dataLancamentoIndex));
+                holder.dataLancamento.setText(cursor.getString(dataLancamentoIndex));
                 holder.avaliacao.setRating(cursor.getFloat(avaliacaoIndex));
                 new DownloadImageTask(holder.poster).execute(cursor.getString(posterIndex));
                 break;
