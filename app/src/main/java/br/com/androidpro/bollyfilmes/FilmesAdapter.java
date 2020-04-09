@@ -87,6 +87,7 @@ public class FilmesAdapter extends CursorAdapter {
                 holder.titulo.setText(cursor.getString(tituloIndex));
                 holder.avaliacao.setRating(cursor.getFloat(avaliacaoIndex));
                 new DownloadImageTask(holder.capa).execute(cursor.getString(capaIndex));
+                break;
             }
             case VIEW_TYPE_ITEM: {
                 holder.titulo.setText(cursor.getString(tituloIndex));
@@ -94,6 +95,7 @@ public class FilmesAdapter extends CursorAdapter {
                 holder.dataLancamento.setText(cursor.getColumnName(dataLancamentoIndex));
                 holder.avaliacao.setRating(cursor.getFloat(avaliacaoIndex));
                 new DownloadImageTask(holder.poster).execute(cursor.getString(posterIndex));
+                break;
             }
         }
     }
