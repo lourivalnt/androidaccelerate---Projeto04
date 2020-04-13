@@ -1,6 +1,9 @@
 package br.com.androidpro.bollyfilmes;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -25,7 +28,6 @@ import androidx.loader.content.Loader;
 
 import br.com.androidpro.bollyfilmes.data.FilmesContract;
 import br.com.androidpro.bollyfilmes.service.FilmesIntentService;
-
 public class MainFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private int posicaoItem = ListView.INVALID_POSITION;
@@ -80,10 +82,9 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         progressDialog.setMessage(getString(R.string.pd_carregando_mensagem));
         progressDialog.setCancelable(false);
 
-        getLoaderManager().initLoader(FILMES_LOADER, null, this);
-
-        Intent intent = new Intent(getContext(), FilmesIntentService.class);
-        getActivity().startService(intent);
+        if (null != filmeUri) {
+            getLoaderManager().initLoader(FILMES_LOADER, null, this);
+        }
 
         return view;
     }
@@ -117,8 +118,12 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         switch (item.getItemId()) {
             case R.id.menu_atualizar:
-                Intent intent = new Intent(getContext(), FilmesIntentService.class);
-                getActivity().startService(intent);
+                Intent intentAlarm = new Intent(getContext(), FilmesIntentService.FilmesReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intentAlarm, PendingIntent.FLAG_ONE_SHOT);
+
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
                 Toast.makeText(getContext(), "Atualizando os filmes...", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_config:
