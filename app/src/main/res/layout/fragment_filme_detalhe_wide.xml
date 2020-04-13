@@ -57,64 +57,64 @@
                 android:adjustViewBounds="true" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data de Lançamento"
-                android:layout_marginTop="5dp"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
 
-            <TextView
-                android:id="@+id/item_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="20/09/2016"
-                android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data de Lançamento"
+                    android:layout_marginTop="5dp"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Descrição"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/item_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="20/09/2016"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/item_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:maxLines="8"
-                android:ellipsize="end"
-                android:text="Bengal Tiger is an action-oriented film, where Mithun Chakraborty plays the role of Inspector Prashant Verma, who is always opposing the evil deeds of Shakti Kapoor's Rukavat Singh. Bengal Tiger is an action-oriented film, where Mithun Chakraborty plays the role of Inspector Prashant Verma, who is always opposing the evil deeds of Shakti Kapoor's Rukavat Singh."
-                android:textAppearance="?android:textAppearanceSmall" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Descrição"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Avaliação"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/item_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="8"
+                    android:ellipsize="end"
+                    android:text="Bengal Tiger is an action-oriented film, where Mithun Chakraborty plays the role of Inspector Prashant Verma, who is always opposing the evil deeds of Shakti Kapoor's Rukavat Singh. Bengal Tiger is an action-oriented film, where Mithun Chakraborty plays the role of Inspector Prashant Verma, who is always opposing the evil deeds of Shakti Kapoor's Rukavat Singh."
+                    android:textAppearance="?android:textAppearanceSmall" />
 
-            <RatingBar
-                android:id="@+id/item_avaliacao"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:numStars="5"
-                android:rating="3" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Avaliação"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <RatingBar
+                    android:id="@+id/item_avaliacao"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:numStars="5"
+                    android:rating="3" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

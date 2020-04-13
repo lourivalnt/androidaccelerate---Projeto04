@@ -82,9 +82,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         progressDialog.setMessage(getString(R.string.pd_carregando_mensagem));
         progressDialog.setCancelable(false);
 
-        if (null != filmeUri) {
-            getLoaderManager().initLoader(FILMES_LOADER, null, this);
-        }
+        getLoaderManager().initLoader(FILMES_LOADER, null, this);
 
         return view;
     }
