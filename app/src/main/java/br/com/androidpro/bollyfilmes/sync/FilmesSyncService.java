@@ -8,9 +8,22 @@ import androidx.annotation.Nullable;
 
 public class FilmesSyncService extends Service {
 
+    private static FilmesSyncAdapter filmesSyncAdapter = null;
+
+    private static final Object lock = new Object();
+
+    @Override
+    public void onCreate() {
+        synchronized (lock) {
+            if (filmesSyncAdapter == null) {
+                filmesSyncAdapter = new FilmesSyncAdapter(getApplicationContext(), true);
+            }
+        }
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return filmesSyncAdapter.getSyncAdapterBinder();
     }
 }
