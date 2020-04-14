@@ -4,7 +4,6 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.AbstractThreadedSyncAdapter;
 import android.content.ContentProviderClient;
 import android.content.ContentResolver;
@@ -20,6 +19,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.TaskStackBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -126,6 +126,16 @@ public class FilmesSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     public void notify(ItemFilme itemFilme) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String notifyPrefKey = getContext().getString(R.string.prefs_notif_filmes_key);
+        String notifyDefault = getContext().getString(R.string.prefs_notif_filmes_default);
+        boolean notifyPrefs = sharedPreferences.getBoolean(notifyPrefKey, Boolean.parseBoolean(notifyDefault));
+
+        if(!notifyPrefs) {
+            return;
+        }
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext()).
                 setSmallIcon(R.mipmap.ic_launcher).
                 setContentTitle(itemFilme.getTitulo()).
